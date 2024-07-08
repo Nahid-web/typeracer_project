@@ -1,3 +1,5 @@
+/server/node_modules/
+
 # Miscellaneous
 *.class
 *.log
@@ -42,4 +44,3 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-/server/node_modules/
