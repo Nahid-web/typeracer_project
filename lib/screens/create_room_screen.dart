@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:typeracer_project/utils/socket_methods.dart';
 import 'package:typeracer_project/widgets/custom_button.dart';
 import 'package:typeracer_project/widgets/custom_text_field.dart';
 
@@ -11,6 +12,14 @@ class CreateRoomScreen extends StatefulWidget {
 
 class _CreateRoomScreenState extends State<CreateRoomScreen> {
   final TextEditingController _nameController = TextEditingController();
+  final SocketMethods _socketMethods = SocketMethods();
+
+  @override
+  void initState() {
+    super.initState();
+    _socketMethods.updateGameListener(context);
+    _socketMethods.notCorrectGameListener(context);
+  }
 
   @override
   void dispose() {
@@ -47,7 +56,7 @@ class _CreateRoomScreenState extends State<CreateRoomScreen> {
                 ),
                 CustomButton(
                   text: 'Create',
-                  onTap: () {},
+                  onTap: () => _socketMethods.createGame(_nameController.text),
                 ),
               ],
             ),
